@@ -10,4 +10,4 @@ function foo() {
 }
 let data = 'windowData'
 let getData = foo()
-getData()
+getData() //windowData

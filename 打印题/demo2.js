@@ -8,4 +8,4 @@ var animal = {
     }, 100)
   }
 }
-animalprintFullName()
+animal.printFullName() //undefinedundefined
