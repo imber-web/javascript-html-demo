@@ -1,17 +1,3 @@
-const obj = {
-  name: 'imber'
-}
-const fn = () => {
-  console.log(this.name)
-}
-function foo() {
-  console.log(this.name)
-}
-fn.call(obj) //window
-foo.call(obj) //imber
-
-// expected output: "cheese"
-
 //核心逻辑，挂载到这个context上，又从context.fn执行，那this就指向了这个context
 Function.prototype.mycall = function (context) {
   // 第一步，有没有参数，有的话如果为普通数据类型转化为Object，否则为window
@@ -46,3 +32,18 @@ Function.prototype.myapply = function (context, arr) {
   // 第六步 返回结果
   return result
 }
+
+// ========================= 测试 =========================
+const obj = {
+  name: 'imber'
+}
+const fn = () => {
+  console.log(this.name)
+}
+function foo() {
+  console.log(this.name)
+}
+// fn.call(obj) //window
+// foo.call(obj) //imber
+fn.mycall(obj)
+foo.mycall(obj)
