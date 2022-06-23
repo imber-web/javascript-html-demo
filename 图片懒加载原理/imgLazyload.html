@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam non at
+      sapiente unde quidem? Molestias accusamus a sed quisquam doloribus, quidem
+      quam ullam delectus quibusdam voluptatum. Quasi delectus atque debitis.
+    </div>
+    <div>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam non at
+      sapiente unde quidem? Molestias accusamus a sed quisquam doloribus, quidem
+      quam ullam delectus quibusdam voluptatum. Quasi delectus atque debitis.
+    </div>
+    <div>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam non at
+      sapiente unde quidem? Molestias accusamus a sed quisquam doloribus, quidem
+      quam ullam delectus quibusdam voluptatum. Quasi delectus atque debitis.
+    </div>
+    <div>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam non at
+      sapiente unde quidem? Molestias accusamus a sed quisquam doloribus, quidem
+      quam ullam delectus quibusdam voluptatum. Quasi delectus atque debitis.
+    </div>
+    <div>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam non at
+      sapiente unde quidem? Molestias accusamus a sed quisquam doloribus, quidem
+      quam ullam delectus quibusdam voluptatum. Quasi delectus atque debitis.
+    </div>
+    <div>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam non at
+      sapiente unde quidem? Molestias accusamus a sed quisquam doloribus, quidem
+      quam ullam delectus quibusdam voluptatum. Quasi delectus atque debitis.
+    </div>
+    <div>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam non at
+      sapiente unde quidem? Molestias accusamus a sed quisquam doloribus, quidem
+      quam ullam delectus quibusdam voluptatum. Quasi delectus atque debitis.
+    </div>
+    <div>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam non at
+      sapiente unde quidem? Molestias accusamus a sed quisquam doloribus, quidem
+      quam ullam delectus quibusdam voluptatum. Quasi delectus atque debitis.
+    </div>
+    <div>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam non at
+      sapiente unde quidem? Molestias accusamus a sed quisquam doloribus, quidem
+      quam ullam delectus quibusdam voluptatum. Quasi delectus atque debitis.
+    </div>
+    <div>
+      <img data-src="./logo.png" alt="" />
+      <img data-src="./logo.png" alt="" />
+      <img data-src="./logo.png" alt="" />
+      <img data-src="./logo.png" alt="" />
+      <img data-src="./logo.png" alt="" />
+      <img data-src="./logo.png" alt="" />
+      <img data-src="./logo.png" alt="" />
+      <img data-src="./logo.png" alt="" />
+    </div>
+    <script>
+      const images = document.querySelectorAll('img')
+      window.addEventListener('scroll', (e) => {
+        images.forEach((image) => {
+          const imageTop = image.getBoundingClientRect().top
+          if (imageTop < window.innerHeight) {
+            const data_src = image.getAttribute('data-src')
+            image.setAttribute('src', data_src)
+          }
+        })
+      })
+    </script>
+  </body>
+</html>
