@@ -47,3 +47,6 @@ function betterBubbleSort(arr) {
   }
   return arr
 }
+
+// 平均时间复杂度是 O(n^2)
+// 最好时间复杂度是O(n)
