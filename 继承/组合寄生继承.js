@@ -36,3 +36,20 @@ instance1.colors.push('3') // ["red", "blue", "green", "3"]
 // 这个例子的高效率体现在它只调用了一次SuperType 构造函数，
 // 并且因此避免了在SubType.prototype 上创建不必要的、多余的属性。
 // 于此同时，原型链还能保持不变；因此，还能够正常使用instanceof 和isPrototypeOf()
+
+// ======================手写版本======================
+// function Parent(name) {
+//   this.name = name;
+//   this.say = () => {
+//     console.log(111);
+//   };
+// }
+// Parent.prototype.play = () => {
+//   console.log(222);
+// };
+// function Children(name) {
+//   Parent.call(this);
+//   this.name = name;
+// }
+// Children.prototype = Object.create(Parent.prototype);
+// Children.prototype.constructor = Children;
