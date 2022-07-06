@@ -40,7 +40,7 @@ LRUCache.prototype.put = function (key, value) {
   }
   if (this.map.size == this.capacity) {
     //如果到达临界值就需要删除第一个
-    const { value: key, done } = this.map.keys().next()
+    const { value: key } = this.map.keys().next()
     this.map.delete(key)
   }
   this.map.set(key, value)
@@ -53,3 +53,7 @@ LRUCache.prototype.put = function (key, value) {
  * obj.put(key,value)
  */
 // @lc code=end
+let lRUCache = new LRUCache(2)
+lRUCache.put(1, 1) // 缓存是 {1=1}
+lRUCache.put(2, 2) // 缓存是 {1=1, 2=2}
+lRUCache.get(1) // 返回 1
