@@ -1,26 +1,33 @@
-function deepClone(obj) {
+function deepClone(obj, set = new WeakMap()) {
   // 第一步,临界条件,不是引用数据类型,或者为null的时候,则跳出递归
   if (typeof obj !== 'object' || obj === null) {
     return obj
   }
-  // 第二步,定义result
-  let result
-  // 第三步,if/else定义result初始值为[]还是{}
-  if (obj instanceof Array) {
-    result = []
-  } else {
-    result = {}
+  // 第二步,特殊处理
+  if (obj instanceof Date) {
+    return new Date(obj)
   }
-  // 第四步,for in两个都可以遍历,但是会遍历到原型对象上的属性
-  for (const key in obj) {
-    // 第五步,过滤原型上的属性
-    if (obj.hasOwnProperty(key)) {
-      // 第六步,递归,核心
-      result[key] = deepClone(obj[key])
+  if (obj instanceof RegExp) {
+    return new RegExp(obj.source, obj.flags)
+  }
+  if (obj instanceof Function) {
+    return function () {
+      return target.apply(this, ...arguments)
     }
   }
-  // 最后放回结果
-  return result
+  // map存数据防止循环引用
+  if (map.has(obj)) {
+    return map.get(obj)
+  }
+  // 利用该对象的构造器创建一个新对象
+  const cloneObj = new obj.constructor()
+  // 把当前克隆的对象存起来
+  map.set(obj, cloneObj)
+  // 遍历target自身可枚举属性
+  Reflect.ownKeys(target).forEach((key) => {
+    cloneObj[key] = deepClone(obj[key], map)
+  })
+  return cloneObj
 }
 
 // ========================= 测试 =========================
@@ -33,3 +40,12 @@ const oldObj = {
 const newObj = deepClone(oldObj)
 oldObj.wife.name = 'other'
 console.log(newObj) //数据不会跟着变化说明成功了
+
+Promise.resolve(1)
+  .then(
+    (res) => {},
+    (fail) => {}
+  )
+  .catch((err) => {
+    console.log(err)
+  })
